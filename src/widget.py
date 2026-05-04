@@ -1,4 +1,5 @@
 from datetime import datetime
+from src.masks import get_mask_card_number, get_mask_account
 
 
 def mask_account_card(account_card: str) -> str:
@@ -7,22 +8,32 @@ def mask_account_card(account_card: str) -> str:
         if not account_card or account_card.strip() == "":
             raise ValueError("Пустая строка")
 
-        list_info = account_card.split(" ")
+        list_info = account_card.split()
 
-        if len(list_info) != 2 or not list_info[1].isdigit():
+        if len(list_info) < 2:
             raise ValueError("Нужно вести тип и номер карты или счета")
-        if len(list_info[1]) == 16:
-            return f"{list_info[0]} {list_info[1][:4]} {list_info[1][4:6]}** **** {list_info[1][-4:]}"
-        elif len(list_info[1]) == 20:
-            return f"{list_info[0]} **{list_info[1][-4:]}"
+
+        card_type = " ".join(list_info[:-1])
+        number = list_info[-1]
+        number = number.replace(" ", "").replace("-", "")
+
+        if not number.isdigit():
+            raise ValueError("Номер должен содержать только цифры")
+
+        if len(number) == 16:
+            masked = get_mask_card_number(number)
+            return f"{card_type} {masked}"
+        elif len(number) == 20:
+            masked = get_mask_account(number)
+            return f"{card_type} {masked}"
         else:
-            raise ValueError(f"Длина номера {len(list_info[1])}. Нужно 16, либо 20")
+            raise ValueError(f"Длина номера {len(number)}. Нужно 16, либо 20")
 
     except ValueError as e:
         return f"Ошибка: {e}"
 
 
-user_account_card = input()
+user_account_card = input("Введите тип и номер счета или карты: ")
 print(mask_account_card(user_account_card))
 
 
@@ -32,5 +43,5 @@ def get_date(date_now: str) -> str:
     return date_format.strftime("%d.%m.%Y")
 
 
-datetime_now = input()
+datetime_now = input("Введите дату: ")
 print(get_date(datetime_now))
