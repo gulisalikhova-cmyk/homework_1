@@ -7,7 +7,7 @@
 ## Установка:
 
 1. Клонируйте репозиторий:
-```shell
+```
 git clone git@github.com:gulisalikhova-cmyk/homework_1.git
 ```
 2. Установите зависимости:

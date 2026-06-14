@@ -1,7 +1,7 @@
 from typing import List, Dict, Any
 
 
-def filter_by_state(list_of_dicts: List[Dict[str, Any]], state="EXECUTED") -> List[Dict[str, Any]]:
+def filter_by_state(list_of_dicts: List[Dict[str, Any]], state: str = "EXECUTED") -> List[Dict[str, Any]]:
     """Функция возвращает новый список словарей, содержащий только те словари, у которых ключ
     state соответствует указанному значению"""
     return [item for item in list_of_dicts if item.get("state") == state]
@@ -16,7 +16,7 @@ transactions = [
 print(filter_by_state(transactions, "EXECUTED"))
 
 
-def sort_by_date(list_of_sort_date: List[Dict[str, Any]], descending=True) -> List[Dict[str, Any]]:
+def sort_by_date(list_of_sort_date: List[Dict[str, Any]], descending: bool = True) -> List[Dict[str, Any]]:
     """Функция должна возвращать новый список, отсортированный по дате (date)"""
     return sorted(list_of_sort_date, key=lambda x: x.get("date", ""), reverse=descending)
 
