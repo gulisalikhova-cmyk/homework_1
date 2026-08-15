@@ -11,10 +11,6 @@ def get_mask_card_number(card_number: str) -> str:
         return f"Ошибка: {e}"
 
 
-bank_card_number = input("Введите номер карты: ")
-print(get_mask_card_number(bank_card_number))
-
-
 def get_mask_account(account_number: str) -> str:
     """Функция принимает номер счета и выводит его маску"""
 
@@ -28,5 +24,3 @@ def get_mask_account(account_number: str) -> str:
         return f"Ошибка: {e}"
 
 
-user_account = input("Введите номер счета: ")
-print(get_mask_account(user_account))
