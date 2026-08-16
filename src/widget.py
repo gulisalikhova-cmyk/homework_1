@@ -33,15 +33,8 @@ def mask_account_card(account_card: str) -> str:
         return f"Ошибка: {e}"
 
 
-user_account_card = input("Введите тип и номер счета или карты: ")
-print(mask_account_card(user_account_card))
-
-
 def get_date(date_now: str) -> str:
     """Функция принимает на вход строку с датой в одном формате и возвращает строку в другом формате"""
     date_format = datetime.fromisoformat(date_now)
     return date_format.strftime("%d.%m.%Y")
 
-
-datetime_now = input("Введите дату: ")
-print(get_date(datetime_now))

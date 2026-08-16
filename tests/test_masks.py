@@ -1,9 +1,11 @@
+import pytest
 from src.masks import get_mask_card_number, get_mask_account
+from tests.conftest import card_number, account_number
 
 
-def test_card_normal():
+def test_card_normal(card_number):
     """Тестирует правильность маскировки номера карты."""
-    result = get_mask_card_number("1234567890123456")
+    result = get_mask_card_number(card_number)
     assert result == "1234 56** **** 3456"
 
 def test_card_with_spaces():
@@ -21,9 +23,9 @@ def test_card_empty():
     result = get_mask_card_number("")
     assert "Ошибка" in result
 
-def test_account_normal():
+def test_account_normal(account_number):
     """Тестирует правильность маскировки номера счета."""
-    result = get_mask_account("12345678901234567890")
+    result = get_mask_account(account_number)
     assert result == "**7890"
 
 def test_account_short():
