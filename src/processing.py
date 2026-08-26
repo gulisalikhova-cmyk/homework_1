@@ -1,4 +1,4 @@
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
 
 def filter_by_state(list_of_dicts: List[Dict[str, Any]], state: str = "EXECUTED") -> List[Dict[str, Any]]:
@@ -28,4 +28,3 @@ test_date = [
     {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
 ]
 print(sort_by_date(test_date))
-

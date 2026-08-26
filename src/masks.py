@@ -22,4 +22,3 @@ def get_mask_account(account_number: str) -> str:
 
     except ValueError as e:
         return f"Ошибка: {e}"
-

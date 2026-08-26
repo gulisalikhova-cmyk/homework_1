@@ -38,4 +38,3 @@ def get_date(date_now: str) -> str:
     """Функция принимает на вход строку с датой в одном формате и возвращает строку в другом формате"""
     date_format = datetime.fromisoformat(date_now)
     return date_format.strftime("%d.%m.%Y")
-
